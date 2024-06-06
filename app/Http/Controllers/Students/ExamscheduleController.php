@@ -12,7 +12,7 @@ class ExamscheduleController extends Controller
     public function index()
     {
         $id = auth()->user()->student_id;
-        $grade = $this->get_gradelist($id, '66/2');
+        $grade = $this->get_gradelist($id, '67/1');
         $schedule = [];
         $student = $this->get_student($id);
         $nnet = $this->nnet_check($id);
@@ -72,7 +72,7 @@ class ExamscheduleController extends Controller
 
     public function get_student($id){
         $student = DB::table('student')
-        ->where('STD_CODE', '1215040001'.$id)
+        ->where('STD_CODE', '1210010000'.$id)
         ->get();
         return $student;
     }
@@ -80,7 +80,7 @@ class ExamscheduleController extends Controller
     public function get_gradelist($id, $sumestry){
         // ตาราง garde
         $gradelist = DB::table('grade')
-        ->where('STD_CODE', '1215040001'.$id)
+        ->where('STD_CODE', '1210010000'.$id)
         ->where('SEMESTRY', $sumestry)
         ->get();
         return $gradelist;

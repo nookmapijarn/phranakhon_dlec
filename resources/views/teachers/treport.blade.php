@@ -1,6 +1,8 @@
 <x-teachers-layout>
   <div class="p-2 sm:ml-64">
     <div class="p-0 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+      <br>
+      <div class="text-2xl font-bold w-full text-center">รายงาน</div>
       <form method="POST" action="{{ route('treport') }}" class="mx-auto mt-4 max-w-4xl sm:mt-6">
         @csrf
         <div class="grid grid-cols-1 gap-2 md:grid md:grid-cols-3 justify-items-center">
@@ -38,12 +40,12 @@
                 @if(request()->get('studreport')=='') <option selected >เลือกรายงาน</option> @endif --}}
                 <option value="">เลือก</option>
                 <option value="นักศึกษาทั้งหมด">นักศึกษาทั้งหมด</option>
-                <option value="เฉพาะผู้คาดว่าจะจบ">เฉพาะผู้คาดว่าจะจบ</option>
-                <option value="ไม่จบตกค้าง(ที่ไม่ได้ลงทะเบียนแล้ว)">ไม่จบตกค้าง (ที่ไม่ได้ลงทะเบียนแล้ว)</option>
+                {{-- <option value="เฉพาะผู้คาดว่าจะจบ">เฉพาะผู้คาดว่าจะจบ</option>
+                <option value="ไม่จบตกค้าง(ที่ไม่ได้ลงทะเบียนแล้ว)">ไม่จบตกค้าง (ที่ไม่ได้ลงทะเบียนแล้ว)</option> --}}
               </select>
           </div>
         </div>
-        <button type="submit" class="rounded-full p-4 mt-2 min-w-full bg-indigo-500 text-white">ดูรายงาน</button> 
+        <button type="submit" class="rounded-full p-2 mt-2 min-w-full bg-indigo-500 text-white">ดูรายงาน</button> 
       </form>
       {{-- คำอธิบาย --}}
       <div class="grid grid-cols-3 gap-2 mt-2 mx-auto mt-4 max-w-4xl sm:mt-6">  

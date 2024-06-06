@@ -11,6 +11,10 @@ class TeachersStudentProfile extends Controller
     //
     public function index(Request $request)
     {
+        $id = auth()->user()->student_id;
+        if ($id != '1210010000') {
+            return redirect('welcome/?roletype='.$id);
+        }
         //
         $student_id = null;
         $student_data = null;
@@ -23,11 +27,11 @@ class TeachersStudentProfile extends Controller
             $student_id = $request->student_id;
 
             $student_data = DB::table('student')
-            ->where('STD_CODE', '=', '1215040001'.$student_id)
+            ->where('STD_CODE', '=', '1210010000'.$student_id)
             ->get();
 
             $grade_data = DB::table('grade')
-            ->where('STD_CODE', '=', '1215040001'.$student_id)
+            ->where('STD_CODE', '=', '1210010000'.$student_id)
             ->where('GRADE', '>', 0)
             ->join('subject', 'grade.SUB_CODE', '=', 'subject.SUB_CODE')
             ->select('subject.SUB_CODE', 'subject.SUB_NAME', 'subject.SUB_CREDIT', 'subject.SUB_TYPE', 'grade.GRADE' , 'grade.SEMESTRY')
@@ -35,18 +39,18 @@ class TeachersStudentProfile extends Controller
             ->get();
 
             $activity_data = DB::table('activity')
-            ->where('STD_CODE', '=', '1215040001'.$student_id)
+            ->where('STD_CODE', '=', '1210010000'.$student_id)
             ->get();
 
             $sum_grade = DB::table('grade')
-            ->where('STD_CODE', '=', '1215040001'.$student_id)
+            ->where('STD_CODE', '=', '1210010000'.$student_id)
             ->where('GRADE', '>', 0)
             ->join('subject', 'grade.SUB_CODE', '=', 'subject.SUB_CODE')
             ->select('subject.SUB_CODE', 'subject.SUB_NAME', 'subject.SUB_CREDIT', 'subject.SUB_TYPE', 'grade.GRADE')
             ->sum('subject.SUB_CREDIT');
 
             $sum_act = DB::table('activity')
-            ->where('STD_CODE', '=', '1215040001'.$student_id)
+            ->where('STD_CODE', '=', '1210010000'.$student_id)
             ->sum('HOUR');
             //echo $student_data, $grade_data, $activity_data;
             

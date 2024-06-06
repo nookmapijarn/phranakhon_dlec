@@ -31,7 +31,7 @@ class TeachersReportController extends Controller
         $semestry = $all_semestry->first()->SEMESTRY;
         $id = auth()->user()->student_id;
 
-        if ($id != '1215040001') {
+        if ($id != '1210010000') {
             return redirect('welcome/?roletype='.$id);
         }
 
@@ -47,7 +47,7 @@ class TeachersReportController extends Controller
         // endtest
 
         if($request->tumbon!=''){
-            $grp_code = str_split($request->tumbon, 4)[0];
+            $grp_code = str_split($request->tumbon, 6)[0];
             $semestry = $request->semestry;
             $tumbon = $request->tumbon;
             // if($grp_code != '0000'){

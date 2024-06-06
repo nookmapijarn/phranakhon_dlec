@@ -29,12 +29,12 @@ class TeachersGradeController extends Controller
         $semestry = $all_semestry->first()->SEMESTRY;
 
 
-        if ($id != '1215040001') {
+        if ($id != '1210010000') {
             return redirect('welcome/?roletype='.$id);
         }
 
         if($request->tumbon!=''){
-            $tumbon = str_split($request->tumbon, 4)[0];
+            $tumbon = str_split($request->tumbon, 6)[0];
             $lavel = $request->lavel;
             $semestry = $request->semestry;
         }else{

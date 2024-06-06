@@ -17,11 +17,11 @@
                     สำหรับครู
                 </a>
             </div>
-            <div class="px-5 py-2">
+            {{-- <div class="px-5 py-2">
                 <a href="{{ url('boss') }}" class="text-base leading-6 text-gray-500 hover:text-gray-900">
                     สำหรับผู้บริหาร
                 </a>
-            </div>
+            </div> --}}
         </nav>
         <div class="flex justify-center mt-8 space-x-6">
             <a href="https://web.facebook.com/Phothong.nfe" class="text-gray-400 hover:text-gray-500">

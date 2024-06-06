@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="google-site-verification" content="2pi9TzWSjw9fEzla9XMTbb3-lTnVb26X8BK6X8sbx0A"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="description" content="ทะเบียนนักศึกษา - สกร.อำเภอโพธิ์ทอง, การเรียนการสอน, ตารางสอบ สกร.อำเภอโพธิ์ทอง, นักศึกษา สกร.อำเภอโพธิ์ทอง, ผลการเรียน สกร.อำเภอโพธิ์ทอง">
-        <meta name="robots" content="ทะเบียนนักศึกษา - สกร.อำเภอโพธิ์ทอง, การเรียนการสอน, ตารางสอบ สกร.อำเภอโพธิ์ทอง, นักศึกษา สกร.อำเภอโพธิ์ทอง, ผลการเรียน สกร.อำเภอโพธิ์ทอง">
-        <title>{{ config('app.name', 'งานการศึกษาพื้นฐาน-สกร.อำเภอโพธิ์ทอง') }}</title>
+        <meta name="description" content="ทะเบียนนักศึกษา - สกร.ระดับเขตพระนคร, การเรียนการสอน, ตารางสอบ สกร.ระดับเขตพระนคร, นักศึกษา สกร.ระดับเขตพระนคร, ผลการเรียน สกร.ระดับเขตพระนคร">
+        <meta name="robots" content="ทะเบียนนักศึกษา - สกร.ระดับเขตพระนคร, การเรียนการสอน, ตารางสอบ สกร.ระดับเขตพระนคร, นักศึกษา สกร.ระดับเขตพระนคร, ผลการเรียน สกร.ระดับเขตพระนคร">
+        <title>{{ config('app.name', 'งานการศึกษาพื้นฐาน-สกร.ระดับเขตพระนคร') }}</title>
         <link rel="icon" type="image/x-icon" href="{{asset('storage/logo.png');}}">
 
         <!-- Fonts -->
@@ -24,8 +24,53 @@
 
     </head>
     <body class="">
-        @if(request()->get('roletype')!='')
-        <!-- Modal container -->
+        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="hidden block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Toggle modal</button>
+        <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex" aria-modal="true" role="dialog">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button onclick="closeModal()" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-center">
+                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                        </svg>
+                        <h3 class="mb-5 text-xl font-normal text-red-500 dark:text-gray-400">สิทธิผู้ใช้งานไม่ถูกต้อง</h3>
+                        {{-- รหัสผู้ใช้ : {{$role = request()->roletype}} <br> --}}
+                        1. หากคุณคือนักศึกษา : ไปที่ สำหรับนักศึกษา <br>
+                        2. หากคุณคือครูผู้สอน : ไปที่ สำหรับครู/ผู้สอน <br>
+                        <div class="grid grid-rows-3 grid-flow-col gap-4 p-5" role="group">
+                            <a href="{{ url('/ประวัติการเรียน') }}" class="inline-flex items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-violet-600 hover:text-gray-900 hover:bg-gray-100 ">
+                                <span class="w-full">1 : สำหรับนักศึกษา</span>
+                                <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </a> 
+                            <a href="{{ url('/teachers') }}" class="inline-flex items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-violet-600 hover:text-gray-900 hover:bg-gray-100 ">
+                                <span class="w-full">2 : สำหรับ ครู/ผู้สอน</span>
+                                <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </a> 
+                            <button class="inline-flex items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-violet-600 hover:text-gray-900 hover:bg-gray-100 ">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <div :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        {{ __('ออกจากระบบ') }}
+                                    </div>
+                                </form>                                
+                                <svg aria-hidden="true" class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button> 
+                        </div>
+                        {{-- <button onclick="closeModal()" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            Yes, I'm sure
+                        </button> --}}
+                        <button onclick="closeModal()" data-modal-hide="popup-modal" type="button" class="p-2 text-sm font-medium text-gray-900 focus:outline-none bg- -800rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100  ">ปิดหน้านี้</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div onclick="closeModal()" id="backdrop-modal" modal-backdrop="popup-modal" class="hidden bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40"></div>
+        {{-- <!-- Modal container -->
         <!-- Trigger button -->
         <button id="modal-open-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hidden">
             Open Modal
@@ -72,17 +117,17 @@
                 </form>
             </div>
             </div>
-        </div>
-        @endif
+        </div> --}}
+        {{-- @endif --}}
 
         <section class="pt-15 bg-center bg-no-repeat bg-[url('storage/studentall.jpg')] background-animate bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-700"> 
             <div class="px-4 mx-auto max-w-screen-xl text-center py-12 lg:py-56">
                 <div class="flex justify-center mb-3 md:m-5">
                     <img src="{{asset('storage/logo.png');}}" width="120px" class="drop-shadow-2xl">
                 </div>
-                <h1 class="md:mb-4 text-xl font-extrabold tracking-tight leading-none text-white md:text-4xl lg:text-5xl tracking-wider leading-relaxed drop-shadow-2xl">Phothong DLEC</h1>
+                <h1 class="md:mb-4 text-xl font-extrabold tracking-tight leading-none text-white md:text-4xl lg:text-5xl tracking-wider leading-relaxed drop-shadow-2xl">Phranakhon DLEC</h1>
                 <p class="md:mb-4 text-sm font-extrabold tracking-tight leading-none text-white md:text-4xl lg:text-2xl tracking-wider leading-relaxed drop-shadow-2xl">บริหารจัดการข้อมูลผู้เรียนออนไลน์</p>
-                {{-- <p class="mb-4 text-sm font-normal text-gray-100 md:text-xl sm:px-16 lg:px-48 drop-shadow-2xl">ศูนย์ส่งเสริมการเรียนรู้อำเภอโพธิ์ทอง</p> --}}
+                {{-- <p class="mb-4 text-sm font-normal text-gray-100 md:text-xl sm:px-16 lg:px-48 drop-shadow-2xl">ศูนย์ส่งเสริมการเรียนรู้ระดับเขตพระนคร</p> --}}
                 {{-- <p class="mb-8 text-sm font-normal text-gray-300 md:text-xl sm:px-16 lg:px-48 drop-shadow-2xl">Phothong District Learning Encouragement Center</p> --}}
                 <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                     <a href="{{ route('login') }}" class="w-full sm:w-auto bg-yellow-300 text-gray-800 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg inline-flex items-center justify-center px-4 py-2.5  ">
@@ -103,7 +148,7 @@
                             <div class="-mt-1 font-sans text-sm font-semibold">ครูผู้สอน</div>
                         </div>
                     </a>
-                    <a href="{{ route('boss') }}" class=" w-full sm:w-auto bg-yellow-300 text-gray-800 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                    {{-- <a href="{{ route('boss') }}" class=" w-full sm:w-auto bg-yellow-300 text-gray-800 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg inline-flex items-center justify-center px-4 py-2.5">
                         <svg class="mr-3 w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
                         </svg>  
@@ -120,7 +165,7 @@
                             <div class="mb-1 text-xs">สอบถาม</div>
                             <div class="-mt-1 font-sans text-sm font-semibold">ช่วยเหลือ</div>
                         </div>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </section>
@@ -142,14 +187,29 @@
     </body>
     @include('layouts.footer')
 </html>
-<script>
-    // Open the modal when the button is clicked
-    document.getElementById('modal-open-button').addEventListener('click', function() {
-    document.getElementById('modal-container').classList.remove('hidden');
-    });
 
-    // Close the modal when the close button is clicked
-    document.getElementById('modal-close-button').addEventListener('click', function() {
-    document.getElementById('modal-container').classList.add('hidden');
+<!-- Script to show modal on load if data is empty -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Simulated data check
+        <?php if(isset($_GET['roletype'])): ?>
+            var roletype = "<?php echo htmlspecialchars($_GET['roletype']); ?>";
+        <?php else: ?>
+            var roletype = null;
+        <?php endif; ?>
+        if (roletype) {
+            var popup_modal = document.getElementById('popup-modal');
+            var backdrop_modal = document.getElementById('backdrop-modal');
+            popup_modal.classList.remove('hidden');
+            backdrop_modal.classList.remove('hidden');
+        }
     });
+  
+    function closeModal(){
+      var popup_modal = document.getElementById('popup-modal');
+            var backdrop_modal = document.getElementById('backdrop-modal');
+            popup_modal.classList.add('hidden');
+            backdrop_modal.classList.add('hidden');
+    }
+  
 </script>

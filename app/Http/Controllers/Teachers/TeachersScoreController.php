@@ -33,13 +33,12 @@ class TeachersScoreController extends Controller
         $all_semestry = DB::table('grade')->select('SEMESTRY')->groupBy('SEMESTRY')->orderBy('SEMESTRY', 'DESC')->get();
 
         $id = auth()->user()->student_id;
-
-        if ($id != '1215040001') {
+        if ($id != '1210010000') {
             return redirect('welcome/?roletype='.$id);
         }
 
         if($request->tumbon!=''){
-            $tumbon = str_split($request->tumbon, 4)[0];
+            $tumbon = str_split($request->tumbon, 6)[0];
             $lavel = $request->lavel;
             $semestry = $request->semestry;
             $subject = $request->subject;

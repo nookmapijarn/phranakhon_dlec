@@ -2,7 +2,7 @@
   <div class="p-4 sm:ml-64">
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
         <div class="text-2xl font-bold w-full text-center">ผลการพัฒนาคุณภาพผู้เรียน (กศน.4)</div>
-        <form method="GET" action="{{ route('tscore') }}" class="text-sm">
+        <form method="GET" action="{{ route('tscore') }}" class="text-sm  mx-auto mt-4 max-w-4xl sm:mt-6">
         <div class="grid grid-cols-1 gap-2 md:grid md:grid-cols-5 justify-items-center">
             <div class="min-w-full" >
               <label>ศกร.ตำบล</label>

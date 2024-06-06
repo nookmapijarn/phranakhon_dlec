@@ -23,6 +23,10 @@ class TeachersController extends Controller
     // }
     public function index(Request $request)
     {   
+        $id = auth()->user()->student_id;
+        if ($id != '1210010000') {
+            return redirect('welcome/?roletype='.$id);
+        }
         // จำนวนนักศึกษา
         $labels = [];
         $data_student = [];

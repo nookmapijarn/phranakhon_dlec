@@ -222,7 +222,7 @@
       labels: labels,
       datasets: [
         {
-          label: 'อำเภอโพธิ์ทอง',
+          label: 'ระดับเขตพระนคร',
           backgroundColor: '#E74C3C',
           borderColor: '#E74C3C',
           data: data_exam_avg,

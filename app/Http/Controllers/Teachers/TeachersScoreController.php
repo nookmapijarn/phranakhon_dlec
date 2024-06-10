@@ -22,7 +22,6 @@ class TeachersScoreController extends Controller
         $tumbon = '';
         $lavel = '';
         $subject = '';
-        $semestry = '';
         $type = '';
         $all_grade = 0;
         $grade_not = 0;
@@ -31,6 +30,7 @@ class TeachersScoreController extends Controller
         $all_tumbon = DB::table('group')->select('GRP_CODE', 'GRP_NAME')->orderBy('GRP_CODE', 'ASC')->get();
         $all_subject = DB::table('subject'.$lavel)->select('SUB_CODE', 'SUB_NAME')->orderBy('SUB_CODE', 'ASC')->get();
         $all_semestry = DB::table('grade')->select('SEMESTRY')->groupBy('SEMESTRY')->orderBy('SEMESTRY', 'DESC')->get();
+        $semestry = $all_semestry->first()->SEMESTRY;
 
         $id = auth()->user()->student_id;
         if ($id != '1210010000') {

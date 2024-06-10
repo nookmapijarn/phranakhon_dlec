@@ -4,6 +4,19 @@
         <div class="text-2xl font-bold w-full text-center">ผลการพัฒนาคุณภาพผู้เรียน (กศน.4)</div>
         <form method="GET" action="{{ route('tscore') }}" class="text-sm  mx-auto mt-4 max-w-4xl sm:mt-6">
         <div class="grid grid-cols-1 gap-2 md:grid md:grid-cols-5 justify-items-center">
+          <div class="min-w-full" >
+              <label>ภาคเรียน</label>
+                <select required id="semestry" name="semestry" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 ">
+                  <option value="">เลือก</option>
+                  @foreach($all_semestry as $sem)
+                      <option value="{{ $sem->SEMESTRY }}"
+                        @if($semestry === $sem->SEMESTRY) selected @endif
+                        >
+                          {{ $sem->SEMESTRY }}
+                      </option>
+                  @endforeach    
+                </select>
+            </div>
             <div class="min-w-full" >
               <label>ศกร.ตำบล</label>
                 <select required id="tumbon" name="tumbon" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 ">
@@ -13,19 +26,6 @@
                         @if($tumbon == $tm->GRP_CODE) selected @endif
                         >
                           {{ $tm->GRP_CODE }} {{ $tm->GRP_NAME }}
-                      </option>
-                  @endforeach    
-                </select>
-            </div>
-            <div class="min-w-full" >
-              <label>ภาคเรียน</label>
-                <select required id="semestry" name="semestry" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 ">
-                  <option value="">เลือก</option>
-                  @foreach($all_semestry as $sem)
-                      <option value="{{ $sem->SEMESTRY }}"
-                        @if($semestry === $sem->SEMESTRY) selected @endif
-                        >
-                          {{ $sem->SEMESTRY }}
                       </option>
                   @endforeach    
                 </select>

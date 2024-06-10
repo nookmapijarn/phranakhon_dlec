@@ -1,6 +1,6 @@
 <x-app-layout>
   <h4 class="font-semibold text-lg text-gray-100 dark:text-gray-200 leading-tight  text-center py-5 bg-orange-600">
-    {{ __('ตารางสอบปลายภาค - ภาคเรียน 1/2566') }}
+    {{ __('ตารางสอบปลายภาค - ภาคเรียน ') }} {{$semestry}}
 </h4>      
     <div class=" text-center pt-2 text-sm" >  สนามสอบ </div>
     @foreach($student as $s)
@@ -40,7 +40,7 @@
       </div>
       <div name="" class=" bg-white">
         <h6 class="font-semibold text-lg text-gray-100 leading-tight text-center py-5 bg-indigo-600">
-          {{ __('ตารางสอบ N-NET - ภาคเรียน 1/2566') }}
+          {{ __('ตารางสอบ N-NET - ภาคเรียน ') }} {{$semestry}}
         </h6>
           @if($nnet === 'N-NET') 
           <div class="font-semibold text-lg text-green-400 leading-tight text-center p-5">

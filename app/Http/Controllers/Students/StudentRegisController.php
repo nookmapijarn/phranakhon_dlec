@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class StudentRegisController extends Controller
 {
-    protected $semestry = '67/1';
     //
     public function index(){
-        $semestry = $this->semestry;
+        $all_semestry = DB::table('grade')->select('SEMESTRY')->groupBy('SEMESTRY')->orderBy('SEMESTRY', 'DESC')->get();
+        $semestry = $all_semestry->first()->SEMESTRY;
+
         $learned = $this->learned()['learned'];
         $allsub = $this->getAllSubject();
         $sumcredit = $this->learned()['sumcredit'];

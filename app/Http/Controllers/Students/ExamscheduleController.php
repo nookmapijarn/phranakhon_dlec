@@ -11,8 +11,11 @@ class ExamscheduleController extends Controller
     //
     public function index()
     {
+        $all_semestry = DB::table('grade')->select('SEMESTRY')->groupBy('SEMESTRY')->orderBy('SEMESTRY', 'DESC')->get();
+        $semestry = $all_semestry->first()->SEMESTRY;
+
         $id = auth()->user()->student_id;
-        $grade = $this->get_gradelist($id, '67/1');
+        $grade = $this->get_gradelist($id, $semestry);
         $schedule = [];
         $student = $this->get_student($id);
         $nnet = $this->nnet_check($id);
@@ -45,7 +48,7 @@ class ExamscheduleController extends Controller
         array_multisort($key_values2, SORT_ASC, $schedule);
         // print $schedule[0]['sub_code'];
         // print_r($schedule);
-        return view('students.examschedule', compact('schedule', 'nnet', 'student'));
+        return view('students.examschedule', compact('schedule', 'nnet', 'student', 'semestry'));
     }
 
     public function nnet_check($id){
